@@ -7,4 +7,8 @@ class BaseResponse {
   String? message;
 
   BaseResponse();
+
+  bool isSuccessful() => statusCode == STATUS_SUCCESS;
+
+  static const int STATUS_SUCCESS = 200;
 }
