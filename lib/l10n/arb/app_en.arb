@@ -1,7 +1,7 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
+    "coursesAppBarTitle": "Courses",
+    "@coursesAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
     }
 }
