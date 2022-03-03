@@ -9,6 +9,14 @@ class CourseListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("course titile ${_course.title}");
+    return Container(
+      padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 13),
+      child: Column(
+        children: [
+          Image.network(_course.image ?? ""),
+          Text(_course.title ?? ""),
+        ],
+      ),
+    );
   }
 }

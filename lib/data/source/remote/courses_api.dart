@@ -5,7 +5,7 @@ import '../../model/responses/courses_response.dart';
 class CoursesApi extends BaseApi {
   Future<CoursesResponse> getCourses() async {
     var response = await get(
-        "/courses", {"country_code": "eg", "page": "1", "limit": "10"});
+        "/courses", {"country_code": "eg", "page": "1", "limit": "50"});
     return CoursesResponse.fromJson(response);
   }
 }
