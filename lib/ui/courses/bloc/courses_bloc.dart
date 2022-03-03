@@ -14,11 +14,11 @@ class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
   CoursesRepository _coursesRepository = CoursesRepository();
 
   CoursesBloc() : super(CoursesState()) {
-    on<CoursesList>(_onListCourses);
+    on<CoursesListEvent>(_onListCourses);
   }
 
   Future<void> _onListCourses(
-      CoursesList event, Emitter<CoursesState> emit) async {
+      CoursesListEvent event, Emitter<CoursesState> emit) async {
     // loading state
     emit(state.copyWith(status: Status.loading));
 

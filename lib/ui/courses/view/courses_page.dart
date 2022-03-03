@@ -5,6 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_training/data/model/course.dart';
@@ -19,7 +20,7 @@ class CoursesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => CoursesBloc()..add(CoursesList()),
+      create: (_) => CoursesBloc()..add(CoursesListEvent()),
       child: const CourseView(),
     );
   }
@@ -31,21 +32,31 @@ class CourseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    bool _refreshed = false;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.coursesAppBarTitle)),
-      body: Builder(builder: (context) {
-        final coursesState =
-            context.select((CoursesBloc coursesBloc) => coursesBloc.state);
+      body: RefreshIndicator(
+        onRefresh: () async {
+          _refreshed = true;
+          context.read<CoursesBloc>().add(CoursesListEvent());
+        },
+        child: Builder(builder: (context) {
+          final coursesState =
+              context.select((CoursesBloc coursesBloc) => coursesBloc.state);
+          if (coursesState.status == Status.failure) {
+            // TODO: show snack bar for the failure
+            print("request failed...${coursesState.message}");
+          } else if (coursesState.status == Status.loading && !_refreshed) {
+            return Center(
+              child: const RefreshProgressIndicator(),
+            );
+          }
 
-        if (coursesState.status == Status.failure) {
-          // TODO: show snack bar for the failure
-          print("request failed...${coursesState.message}");
-        }
-
-        // return const Center(child: CounterText());
-        return CoursesListView(coursesState.courses);
-      }),
+          // return const Center(child: CounterText());
+          return CoursesListView(coursesState.courses);
+        }),
+      ),
     );
   }
 }
