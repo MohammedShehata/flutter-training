@@ -8,7 +8,7 @@ class BaseResponse {
 
   BaseResponse();
 
-  bool isSuccessful() => statusCode == STATUS_SUCCESS;
+  bool isSuccessful() => statusCode == STATUS_SUCCESS.toString();
 
   static const int STATUS_SUCCESS = 200;
 }
