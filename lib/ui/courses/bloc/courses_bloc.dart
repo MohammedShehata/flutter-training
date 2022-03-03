@@ -6,6 +6,7 @@ import 'package:flutter_training/data/model/course.dart';
 import 'package:flutter_training/data/model/responses/courses_response.dart';
 import 'package:flutter_training/data/repository/CoursesRepository.dart';
 import 'package:flutter_training/ui/base_state.dart';
+import 'package:flutter_training/utils/bloc_utils.dart';
 
 part 'courses_event.dart';
 
@@ -23,24 +24,15 @@ class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
     // loading state
     emit(state.copyWith(status: Status.loading));
 
-    try {
-      var coursesResponse = await _coursesRepository.getCourses();
-
-      if (coursesResponse.isSuccessful()) {
-        emit(state.copyWith(
-            status: Status.success, courses: coursesResponse.data?.courses));
-      } else {
-        onFailed(emit, coursesResponse);
-      }
-    } on Exception catch (_) {
-      onFailed(emit, null);
-    }
-  }
-
-  void onFailed(Emitter<CoursesState> emit, CoursesResponse? coursesResponse) {
-    emit(state.copyWith(
-        status: Status.failure,
-        statusCode: coursesResponse?.statusCode,
-        message: coursesResponse?.message));
+    await networkCall<CoursesResponse>(_coursesRepository.getCourses(),
+        (coursesResponse) {
+      emit(state.copyWith(
+          status: Status.success, courses: coursesResponse.data?.courses));
+    }, (coursesResponse) {
+      emit(state.copyWith(
+          status: Status.failure,
+          statusCode: coursesResponse?.statusCode,
+          message: coursesResponse?.message));
+    });
   }
 }
