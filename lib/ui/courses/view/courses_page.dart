@@ -13,6 +13,7 @@ import 'package:flutter_training/l10n/l10n.dart';
 import 'package:flutter_training/ui/base_state.dart';
 import 'package:flutter_training/ui/courses/bloc/courses_bloc.dart';
 import 'package:flutter_training/ui/courses/widgets/course_list_tile.dart';
+import 'package:flutter_training/utils/ui_utils.dart';
 
 class CoursesPage extends StatelessWidget {
   const CoursesPage({Key? key}) : super(key: key);
@@ -36,26 +37,30 @@ class CourseView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.coursesAppBarTitle)),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          _refreshed = true;
-          context.read<CoursesBloc>().add(CoursesListEvent());
-        },
-        child: Builder(builder: (context) {
-          final coursesState =
-              context.select((CoursesBloc coursesBloc) => coursesBloc.state);
-          if (coursesState.status == Status.failure) {
-            // TODO: show snack bar for the failure
-            print("request failed...${coursesState.message}");
-          } else if (coursesState.status == Status.loading && !_refreshed) {
-            return Center(
-              child: const RefreshProgressIndicator(),
-            );
+      body: BlocListener<CoursesBloc, CoursesState>(
+        listener: (context, state) {
+          if (state.status == Status.failure) {
+            showMessage(context, state.message ?? l10n.errorHappened);
           }
+        },
+        child: RefreshIndicator(
+          onRefresh: () async {
+            _refreshed = true;
+            context.read<CoursesBloc>().add(CoursesListEvent());
+          },
+          child: Builder(builder: (context) {
+            final coursesState =
+                context.select((CoursesBloc coursesBloc) => coursesBloc.state);
+            if (coursesState.status == Status.loading && !_refreshed) {
+              return Center(
+                child: const RefreshProgressIndicator(),
+              );
+            }
 
-          // return const Center(child: CounterText());
-          return CoursesListView(coursesState.courses);
-        }),
+            // return const Center(child: CounterText());
+            return CoursesListView(coursesState.courses);
+          }),
+        ),
       ),
     );
   }

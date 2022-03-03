@@ -3,5 +3,6 @@
     "coursesAppBarTitle": "الدورات",
     "@coursesAppBarTitle": {
         "description": "الدورات الحلوه"
-    }
+    },
+    "errorHappened": "حدث خطأ"
 }

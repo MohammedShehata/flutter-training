@@ -1,7 +1,8 @@
 {
-    "@@locale": "en",
-    "coursesAppBarTitle": "Courses",
-    "@coursesAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "coursesAppBarTitle": "Courses",
+  "@coursesAppBarTitle": {
+    "description": "Text shown in the AppBar of the Counter Page"
+  },
+  "errorHappened": "Server Error happened"
 }
