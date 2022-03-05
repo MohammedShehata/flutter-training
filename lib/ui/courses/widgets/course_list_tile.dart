@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training/generated/assets.dart';
 
 import '../../../data/model/course.dart';
 
@@ -13,7 +14,11 @@ class CourseListTile extends StatelessWidget {
       padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 13),
       child: Column(
         children: [
-          Image.network(_course.image ?? ""),
+          FadeInImage(
+            placeholder: AssetImage(Assets.imagesCartzero),
+            image: NetworkImage(_course.image ?? ""),
+            height: 180,
+          ),
           Text(_course.title ?? ""),
         ],
       ),
