@@ -33,3 +33,17 @@ flutter:
 
   assets:
     - images/
+
+  fonts:
+    - family: CairoBold
+      fonts:
+        - asset: fonts/cairo_bold.ttf
+    - family: CairoRegular
+      fonts:
+        - asset: fonts/cairo_regular.ttf
+    - family: MontserratBold
+      fonts:
+        - asset: fonts/montserrat_bold.ttf
+    - family: MontserratRegular
+      fonts:
+        - asset: fonts/montserrat_regular.ttf

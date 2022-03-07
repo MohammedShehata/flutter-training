@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training/theme/app_colors.dart';
+import 'package:flutter_training/theme/app_fonts.dart';
 import 'package:flutter_training/generated/assets.dart';
 
 import '../../../data/model/course.dart';
@@ -40,7 +42,7 @@ class CourseListTile extends StatelessWidget {
                           topLeft: Radius.circular(8),
                           bottomRight: Radius.circular(8)),
                       child: Container(
-                        color: Color.fromARGB(50, 0, 0, 0),
+                        color: AppColors.black50,
                         child: Text(_course.duration.toString()),
                         padding: EdgeInsets.only(
                             top: 4, bottom: 4, left: 16, right: 16),
@@ -65,12 +67,15 @@ class CourseListTile extends StatelessWidget {
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
               _course.title ?? "",
+              style: AppFonts.headline2FontDark(context),
             ),
           ),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: Text("${_course.currencyCode} ${_course.price}"),
-          )
+            child: Text(
+              "${_course.currencyCode} ${_course.price}",
+            ),
+          ),
         ],
       ),
     );
