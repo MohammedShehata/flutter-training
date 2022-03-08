@@ -12,3 +12,7 @@ void showMessage(context, String? message) {
       ),
     );
 }
+
+void navigateTo(context, Route<void> route) {
+  Navigator.push(context, route);
+}

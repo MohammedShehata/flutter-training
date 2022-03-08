@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_training/data/model/course.dart';
 import 'package:flutter_training/l10n/l10n.dart';
 import 'package:flutter_training/ui/base_state.dart';
+import 'package:flutter_training/ui/course_details/view/course_details_page.dart';
 import 'package:flutter_training/ui/courses/bloc/courses_bloc.dart';
 import 'package:flutter_training/ui/courses/widgets/course_list_tile.dart';
 import 'package:flutter_training/utils/ui_utils.dart';
@@ -76,7 +77,12 @@ class CoursesListView extends StatelessWidget {
     return ListView.builder(
         itemCount: _courses.length,
         itemBuilder: (context, index) {
-          return CourseListTile(_courses[index]);
+          return CourseListTile(
+            _courses[index],
+            onTab: (course) {
+              navigateTo(context, CourseDetailsPage.route(course: course));
+            },
+          );
         });
   }
 }
