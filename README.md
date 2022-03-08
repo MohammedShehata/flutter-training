@@ -66,5 +66,5 @@ $ open coverage/index.html
 - [Very good cli](https://pub.dev/packages/very_good_cli) for initializing the app with flavors and localization
 - [Advanced json to dart](https://plugins.jetbrains.com/plugin/16236-advancedjson2dart) for generating models from json
 - [Dart data class](https://plugins.jetbrains.com/plugin/12129-bloc) for generating copyWith function
-- [Bloc](https://plugins.jetbrains.com/plugin/12429-dart-data-class) generating bloc classess(Bloc, State, event)
-- [Assests generate](https://plugins.jetbrains.com/plugin/15427-flutterassetsgenerator)
+- [Bloc](https://plugins.jetbrains.com/plugin/12429-dart-data-class) generating bloc classes(Bloc, State, Event)
+- [Assests generator](https://plugins.jetbrains.com/plugin/15427-flutterassetsgenerator)
