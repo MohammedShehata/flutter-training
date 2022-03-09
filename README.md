@@ -62,9 +62,15 @@ $ open coverage/index.html
 - https://docs.flutter.dev/development/data-and-backend/json
 - https://docs.flutter.dev/cookbook/design/fonts
 
+---
+## Change App Icons
+you can change it manually [check this](https://github.com/VeryGoodOpenSource/very_good_cli/blob/main/doc/very_good_core.md#updating-app-icons-).
+
+---
 ## Useful Plugins Used
 - [Very good cli](https://pub.dev/packages/very_good_cli) for initializing the app with flavors and localization
 - [Advanced json to dart](https://plugins.jetbrains.com/plugin/16236-advancedjson2dart) for generating models from json
 - [Dart data class](https://plugins.jetbrains.com/plugin/12129-bloc) for generating copyWith function
 - [Bloc](https://plugins.jetbrains.com/plugin/12429-dart-data-class) generating bloc classes(Bloc, State, Event)
-- [Assests generator](https://plugins.jetbrains.com/plugin/15427-flutterassetsgenerator)
+- [Assets generator](https://plugins.jetbrains.com/plugin/15427-flutterassetsgenerator)
+- [Assets autocompletion](https://plugins.jetbrains.com/plugin/index?xmlId=com.ixigua.flutter_asset_iteral)
