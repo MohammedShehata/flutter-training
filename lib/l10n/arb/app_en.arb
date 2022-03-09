@@ -4,5 +4,11 @@
   "@coursesAppBarTitle": {
     "description": "Text shown in the AppBar of the Counter Page"
   },
-  "errorHappened": "Server Error happened"
+  "errorHappened": "Server Error happened",
+  "courseSubscribers": "{subscriberCount} subscribers",
+  "@courseSubscribers": {
+    "placeholders": {
+      "subscriberCount": {}
+    }
+  }
 }

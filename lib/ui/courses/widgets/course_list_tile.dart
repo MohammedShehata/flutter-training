@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/generated/assets.dart';
+import 'package:flutter_training/l10n/l10n.dart';
 import 'package:flutter_training/theme/app_colors.dart';
 import 'package:flutter_training/theme/app_fonts.dart';
 
@@ -13,6 +14,8 @@ class CourseListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return GestureDetector(
       child: Container(
         padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 13),
@@ -60,7 +63,9 @@ class CourseListTile extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: Text(_course.subscribersCount.toString()),
+                  child: Text(
+                    l10n.courseSubscribers(_course.subscribersCount.toString()),
+                  ),
                 ),
                 Image.asset(Assets.imagesStudents),
               ],

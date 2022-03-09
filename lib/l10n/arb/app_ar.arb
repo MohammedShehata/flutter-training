@@ -4,5 +4,11 @@
     "@coursesAppBarTitle": {
         "description": "الدورات الحلوه"
     },
-    "errorHappened": "حدث خطأ"
+    "errorHappened": "حدث خطأ",
+    "courseSubscribers": "{subscriberCount} متابع",
+    "@courseSubscribers": {
+        "placeholders": {
+            "subscriberCount": {}
+        }
+    }
 }
