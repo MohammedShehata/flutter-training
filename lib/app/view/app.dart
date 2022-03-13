@@ -28,9 +28,12 @@ class App extends StatelessWidget {
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate, // for mirroring the widgets in rtl and ltr
+        GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       home: const CoursesPage(),
+      // home: const LoginPage(),
     );
   }
 }

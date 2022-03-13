@@ -41,13 +41,18 @@ class CourseListTile extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      alignment: Alignment.bottomRight,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(8)),
-                        child: Container(
+                      alignment: AlignmentDirectional.bottomEnd,
+                      child: Container(
+                        // borderRadius: BorderRadius.only(
+                        //     topLeft: Radius.circular(8),
+                        //     bottomRight: Radius.circular(8)),
+                        decoration: BoxDecoration(
                           color: AppColors.black50,
+                          borderRadius: BorderRadiusDirectional.only(
+                              topStart: Radius.circular(8),
+                              bottomEnd: Radius.circular(8)),
+                        ),
+                        child: Container(
                           child: Text(_course.duration.toString()),
                           padding: EdgeInsets.only(
                               top: 4, bottom: 4, left: 16, right: 16),

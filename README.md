@@ -54,6 +54,15 @@ $ open coverage/index.html
 ```
 
 ---
+## Change App Icons
+you can change it manually [check this](https://github.com/VeryGoodOpenSource/very_good_cli/blob/main/doc/very_good_core.md#updating-app-icons-).
+
+---
+## Handling RTL in the design
+use the suffix <b>Directional</b> for paddings and alignment(that has a start instead of left and end instead of right) eg: EdgeInsetsDirectional, BorderRadiusDirectional, AlignmentDirectional,....
+
+
+---
 
 ## Resources
 - https://docs.flutter.dev/get-started/codelab
@@ -61,10 +70,6 @@ $ open coverage/index.html
 - https://bloclibrary.dev/#/fluttertodostutorial
 - https://docs.flutter.dev/development/data-and-backend/json
 - https://docs.flutter.dev/cookbook/design/fonts
-
----
-## Change App Icons
-you can change it manually [check this](https://github.com/VeryGoodOpenSource/very_good_cli/blob/main/doc/very_good_core.md#updating-app-icons-).
 
 ---
 ## Useful Plugins Used
