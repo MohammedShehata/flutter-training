@@ -14,7 +14,7 @@ import 'flavor_constants.dart';
 void main() {
 
   FlavorConfig(variables: {
-    BASE_URL: "developer.tadarab.com",
+    BASE_URL: "tadarab.com",
     BASE_URL_PATH: "/wp-json/api"
   });
   bootstrap(() => const App());
