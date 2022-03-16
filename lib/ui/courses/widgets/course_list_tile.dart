@@ -41,16 +41,13 @@ class CourseListTile extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      alignment: AlignmentDirectional.bottomEnd,
+                      alignment: AlignmentDirectional.bottomStart,
                       child: Container(
-                        // borderRadius: BorderRadius.only(
-                        //     topLeft: Radius.circular(8),
-                        //     bottomRight: Radius.circular(8)),
                         decoration: BoxDecoration(
                           color: AppColors.black50,
                           borderRadius: BorderRadiusDirectional.only(
-                              topStart: Radius.circular(8),
-                              bottomEnd: Radius.circular(8)),
+                              topEnd: Radius.circular(8),
+                              bottomStart: Radius.circular(8)),
                         ),
                         child: Container(
                           child: Text(_course.duration.toString()),
@@ -64,26 +61,26 @@ class CourseListTile extends StatelessWidget {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Image.asset(Assets.imagesStudents),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     l10n.courseSubscribers(_course.subscribersCount.toString()),
                   ),
                 ),
-                Image.asset(Assets.imagesStudents),
               ],
             ),
             Align(
-              alignment: AlignmentDirectional.centerEnd,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 _course.title ?? "",
                 style: AppFonts.headline2FontDark(context),
               ),
             ),
             Align(
-              alignment: AlignmentDirectional.centerEnd,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 "${_course.currencyCode} ${_course.price}",
               ),
