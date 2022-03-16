@@ -10,5 +10,7 @@
     "placeholders": {
       "subscriberCount": {}
     }
-  }
+  },
+  "ar": "Ar",
+  "en": "En"
 }

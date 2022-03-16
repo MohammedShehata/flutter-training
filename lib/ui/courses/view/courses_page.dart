@@ -8,6 +8,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_training/app/cubit/language_cubit.dart';
 import 'package:flutter_training/data/model/course.dart';
 import 'package:flutter_training/l10n/l10n.dart';
 import 'package:flutter_training/ui/base_state.dart';
@@ -36,34 +37,48 @@ class CourseView extends StatelessWidget {
     final l10n = context.l10n;
     bool _refreshed = false;
 
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.coursesAppBarTitle)),
-      body: BlocListener<CoursesBloc, CoursesState>(
-        listener: (context, state) {
-          if (state.status == Status.failure) {
-            showMessage(context, state.message ?? l10n.errorHappened);
-          }
-        },
-        child: RefreshIndicator(
-          onRefresh: () async {
-            _refreshed = true;
-            context.read<CoursesBloc>().add(CoursesListEvent());
-          },
-          child: Builder(builder: (context) {
-            final coursesState =
-                context.select((CoursesBloc coursesBloc) => coursesBloc.state);
-            if (coursesState.status == Status.loading && !_refreshed) {
-              return Center(
-                child: const RefreshProgressIndicator(),
-              );
-            }
-
-            // return const Center(child: CounterText());
-            return CoursesListView(coursesState.courses);
-          }),
+    return Builder(builder: (context) {
+      var locale = context.select((LanguageCubit cubit) => cubit.state);
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.coursesAppBarTitle),
+          actions: [
+            MaterialButton(
+              padding: EdgeInsets.all(10),
+              onPressed: () {
+                context.read<LanguageCubit>().triggerLanguage();
+              },
+              child: Text(locale.languageCode == "ar" ? l10n.en : l10n.ar),
+            )
+          ],
         ),
-      ),
-    );
+        body: BlocListener<CoursesBloc, CoursesState>(
+          listener: (context, state) {
+            if (state.status == Status.failure) {
+              showMessage(context, state.message ?? l10n.errorHappened);
+            }
+          },
+          child: RefreshIndicator(
+            onRefresh: () async {
+              _refreshed = true;
+              context.read<CoursesBloc>().add(CoursesListEvent());
+            },
+            child: Builder(builder: (context) {
+              final coursesState = context
+                  .select((CoursesBloc coursesBloc) => coursesBloc.state);
+              if (coursesState.status == Status.loading && !_refreshed) {
+                return Center(
+                  child: const RefreshProgressIndicator(),
+                );
+              }
+
+              // return const Center(child: CounterText());
+              return CoursesListView(coursesState.courses);
+            }),
+          ),
+        ),
+      );
+    });
   }
 }
 
