@@ -6,4 +6,6 @@ class AppColors {
   static const black50 = const Color(0x80000000);
   static const fontDark = const Color(0xff111111);
   static const blue = const Color(0xFF13B9FF);
+  static const textFieldBackground = const Color(0xFFF4F5F7);
+  static const white = const Color(0xFFFFFFFF);
 }
